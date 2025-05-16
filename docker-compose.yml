@@ -2,26 +2,33 @@ version: '3.7'
 
 services:
   backend:
+    image: starlitskycode/tea-shop-backend:main
     build:
       context: ./backend
-    image: starlitskycode/tea-shop-backend:main
     ports:
       - "5000:5000"
     networks:
       - app-network
     environment:
       - FLASK_APP=app.py
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/healthcheck"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
 
   frontend:
+    image: starlitskycode/tea-shop-frontend:main
     build:
       context: ./frontend
-    image: starlitskycode/tea-shop-frontend:main
     ports:
       - "3000:80"
     depends_on:
       - backend
     networks:
       - app-network
+    restart: unless-stopped
 
 networks:
   app-network:
