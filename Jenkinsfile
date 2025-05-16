@@ -4,25 +4,18 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        // Multibranch Pipeline сам клонирует репо, но на всякий случай:
+        // Not nessesary for multibranch
         checkout scm
       }
     }
 
     stage('Build Services') {
       steps {
-        // Убедимся, что docker-compose видит файлы
-        sh 'ls -R .'
+        // sh 'ls -R .'
 
-        // Собираем backend и frontend
+        // Build backend and frontend
         sh 'docker compose -f docker-compose.yml build'
       }
-    }
-
-    stage('Debug workspace') {
-        steps {
-            sh 'ls -R .'
-        }
     }
     
 
@@ -30,9 +23,9 @@ pipeline {
         steps {
             sh '''
             docker compose -f docker-compose.yml up -d
-            # Ждём поднятия
+            # Wait...
             sleep 5
-            # -T отключает TTY
+
             docker compose -f docker-compose.yml exec -T backend pytest --maxfail=1 --disable-warnings -q
             docker compose -f docker-compose.yml down
             '''
@@ -43,9 +36,9 @@ pipeline {
         when { branch 'main' }
         steps {
             withCredentials([usernamePassword(
-                credentialsId: 'docker-token',  // ID, которое вы указали при добавлении
-                usernameVariable: 'DOCKER_USER',   // Переменная для логина
-                passwordVariable: 'DOCKER_PASS'    // Переменная для пароля
+                credentialsId: 'docker-token',
+                usernameVariable: 'DOCKER_USER',
+                passwordVariable: 'DOCKER_PASS'
             )]) {
                 sh '''
                     echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
@@ -58,7 +51,7 @@ pipeline {
 
   post {
     always {
-      // Очищаем workspace, чтобы не копились артефакты
+      // Clean workspace
       cleanWs()
     }
   }
