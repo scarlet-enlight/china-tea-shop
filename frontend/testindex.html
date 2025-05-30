@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chinese Tea Store</title>
+</head>
+<body>
+    <h1> Chinese Tea Store</h1>
+
+    <h2>Available Teas</h2>
+    <ul id="tea-list"></ul>
+
+    <h2>Your Cart</h2>
+    <ul id="cart-list"></ul>
+    <button onclick="buyCart()">Buy All</button>
+
+    <script>
+        const API = 'http://localhost:5000';
+
+        async function fetchTeas() {
+            const res = await fetch(`${API}/teas`);
+            const data = await res.json();
+            const list = document.getElementById('tea-list');
+            list.innerHTML = '';
+            data.teas.forEach(tea => {
+                const li = document.createElement('li');
+                li.innerHTML = `${tea.name} - $${tea.price.toFixed(2)} ` +
+                    `<button onclick="addToCart(${tea.id})">Add to cart</button>`;
+                list.appendChild(li);
+            });
+        }
+
+        async function fetchCart() {
+            const res = await fetch(`${API}/cart`);
+            const data = await res.json();
+            const list = document.getElementById('cart-list');
+            list.innerHTML = '';
+            data.cart.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.name} - $${item.price.toFixed(2)} ` +
+                    `<button onclick="removeFromCart(${item.cart_item_id})">Remove</button>`;
+                list.appendChild(li);
+            });
+        }
+
+        async function addToCart(teaId) {
+            const res = await fetch(`${API}/add_to_cart/${teaId}`, {
+                method: 'POST'
+            });
+            const data = await res.json();
+            alert(data.message);
+            fetchCart();
+        }
+
+        async function removeFromCart(itemId) {
+            const res = await fetch(`${API}/remove_from_cart/${itemId}`, {
+                method: 'DELETE'
+            });
+            const data = await res.json();
+            alert(data.message);
+            fetchCart();
+        }
+
+        async function buyCart() {
+            const res = await fetch(`${API}/buy_cart`, {
+                method: 'POST'
+            });
+            const data = await res.json();
+            alert(data.message);
+            fetchCart();
+        }
+
+        fetchTeas();
+        fetchCart();
+    </script>
+</body>
+</html>
