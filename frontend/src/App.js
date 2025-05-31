@@ -5,9 +5,8 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Используйте localhost вместо backend (для доступа из браузера)
-    axios.get('http://localhost:5000/api')
-          .then(response => setMessage(response.data.message))
+    axios.get('http://localhost:5000/')
+          .then(response => setMessage(response.data))
           .catch(error => console.error(error));
   }, []);
 
