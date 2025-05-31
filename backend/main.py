@@ -1,6 +1,7 @@
-from flask import request, jsonify
 from config import app, db
-from models import Tea, CartItem
+from flask import jsonify, request
+from models import CartItem, Tea
+
 
 @app.route("/teas", methods=["GET"])
 def get_teas():
@@ -38,6 +39,7 @@ def add_to_cart(tea_id):
 
     return jsonify({"message": f"Added {tea.name} to cart"}), 200
 
+
 @app.route("/remove_from_cart/<int:item_id>", methods=["DELETE"])
 def remove_from_cart(item_id):
     item = CartItem.query.get(item_id)
@@ -48,16 +50,11 @@ def remove_from_cart(item_id):
     db.session.commit()
     return jsonify({"message": "Item removed from cart"}), 200
 
+
 @app.route("/cart", methods=["GET"])
 def get_cart():
     items = CartItem.query.all()
-    teas_in_cart = [
-        {
-            "cart_item_id": item.id,
-            **item.tea.to_json()
-        }
-        for item in items
-    ]
+    teas_in_cart = [{"cart_item_id": item.id, **item.tea.to_json()} for item in items]
     return jsonify({"cart": teas_in_cart})
 
 
@@ -76,9 +73,17 @@ def buy_cart():
 
     return jsonify({"message": f"You bought: {names}. Total price: ${total:.2f}"}), 200
 
+
 @app.route("/")
 def home():
     return "Welcome to the Chineese tea store!"
+
+
+# For Jenkins test stage
+@app.route("/healthcheck")
+def healthcheck():
+    return jsonify({"status": "ok"}), 200
+
 
 if __name__ == "__main__":
     with app.app_context():
