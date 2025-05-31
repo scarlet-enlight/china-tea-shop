@@ -1,12 +1,5 @@
 import pytest
-from main import app
-
-# @pytest.fixture(scope="session", autouse=True)
-# def setup_database():
-#     with app.app_context():
-#         db.create_all()
-#         yield
-#         db.drop_all()
+from main import app, db
 
 
 @pytest.fixture
@@ -14,6 +7,17 @@ def client():
     app.config["TESTING"] = True
     with app.test_client() as client:
         yield client
+
+
+@pytest.fixture(scope="session", autouse=True)
+def setup_database():
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///:memory:"
+    # Change it SEPARATE test configuration and production LATER
+    app.config["TESTING"] = True
+    with app.app_context():
+        db.create_all()
+        yield
+        db.drop_all()
 
 
 # Sample test if /teas returns 200
