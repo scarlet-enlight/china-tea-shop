@@ -5,6 +5,7 @@ services:
     image: starlitskycode/tea-shop-backend:main
     build:
       context: ./backend
+    container_name: tea-shop-backend
     ports:
       - "5000:5000"
     networks:
@@ -22,6 +23,7 @@ services:
     image: starlitskycode/tea-shop-frontend:main
     build:
       context: ./frontend
+    container_name: tea-shop-frontend
     ports:
       - "3000:80"
     depends_on:
