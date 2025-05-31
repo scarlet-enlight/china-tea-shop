@@ -18,6 +18,8 @@ services:
       timeout: 5s
       retries: 3
     restart: unless-stopped
+    volumes:
+      - ./backend:/app
 
   frontend:
     image: starlitskycode/tea-shop-frontend:main
