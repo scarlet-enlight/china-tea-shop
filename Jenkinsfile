@@ -37,6 +37,9 @@ pipeline {
             sleep 2
           done
 
+          #echo "Create table..."
+          docker compose -f docker-compose.yml exec -T backend python init_db.py
+
           echo "🚀 Running tests..."
           docker compose -f docker-compose.yml exec -T backend pytest tests --maxfail=1 --disable-warnings -q
 

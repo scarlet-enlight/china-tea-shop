@@ -1,13 +1,12 @@
 import pytest
-from main import app, db
+from main import app
 
-
-@pytest.fixture(scope="session", autouse=True)
-def setup_database():
-    with app.app_context():
-        db.create_all()
-        yield
-        db.drop_all()
+# @pytest.fixture(scope="session", autouse=True)
+# def setup_database():
+#     with app.app_context():
+#         db.create_all()
+#         yield
+#         db.drop_all()
 
 
 @pytest.fixture
