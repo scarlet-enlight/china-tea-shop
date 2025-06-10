@@ -1,5 +1,6 @@
-import os
+# file to store our API with help of Flask and database system
 
+import os
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy

@@ -1,3 +1,5 @@
+# file to model tables with columns for the database + returnal to json elements
+
 from config import db
 
 class Tea(db.Model):

@@ -1,3 +1,5 @@
+# main python file for API output in backend subpages (where main is localhost:5000)
+
 from config import app, db
 from flask import jsonify, request
 from models import CartItem, Tea
@@ -76,7 +78,7 @@ def buy_cart():
 
 @app.route("/")
 def home():
-    return "Welcome to the Chineese tea store!"
+    return "Welcome to the Chinese tea store!"
 
 
 # For Jenkins test stage
