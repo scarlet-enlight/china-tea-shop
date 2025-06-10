@@ -1,38 +1,112 @@
-.App {
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Amiko';
+  font-size: 14px;
+  color: rgb(238, 227, 224);
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#container{
+  display: grid;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header{
+  background-color: rgb(133, 54, 29);
+  width: auto;
+  display: grid;
+  grid-template-columns: 80% 1fr 1fr 1fr 1fr;
+  border-bottom: 2cqh solid rgba(32, 27, 27, 0.75);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#title{
+  font-size: 44px;
+  font-weight: 500;
+  position: absolute;
+  left: 40.5%;
+  top: -25px;
+  font-family: 'Lugrasimo';
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar-tag{
+  width: auto;
+  height: 60px;
+  padding: 15px;
+  vertical-align: middle;
+  border-left: 0.5px solid rgba(32, 27, 27, 0.75);
+}
+
+.sidebar-icon{
+  width: 60px;
+  height: 60px;
+  text-align: center;
+}
+
+#background{
+  background-image: url("../public/images/test.jpg");
+  width: auto;
+  height: auto;
+  display: grid;
+  grid-template-columns: 5fr 90% 5fr;
+}
+
+.deco-block{
+  background-color: rgba(32, 27, 27, 0.75);
+}
+
+nav{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-tab{
+  font-size: 18px;
+  font-family: 'Cantata One';
+  width: 10%;
+  color: rgb(238, 227, 224);
+  background-color: rgba(211, 192, 22, 0.733);
+  border-left: 2px solid rgb(49, 52, 54);
+  border-right: 2px solid rgb(49, 52, 54);
+  margin: 0;
+  transition: all 2s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-tab:first{
+  border-left: none;
+}
+.nav-tab:last-child{
+  border-right: none;
+}
+
+.nav-tab:hover{
+  background-color: rgba(9, 156, 224, 0.733);
+  cursor: pointer;
+  color: rgb(49, 52, 54);
+  text-shadow: 1px 1px rgb(49, 52, 54);
+  font-weight: 700;
+}
+
+article{
+  font-size: 25px;
+}
+
+footer{
+  background-color: rgb(133, 54, 29);
+}
+
+a:link{
+  color: rgb(238, 227, 224);
+  text-decoration: none;
+}
+
+a:visited{
+  color: rgb(238, 227, 224);
 }
