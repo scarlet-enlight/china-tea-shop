@@ -314,4 +314,58 @@ a:link{
 a:visited{
   color: var(--visited-link);
 }
+
+#newsletter-section{
+  background-color: var(--bg-newsletter);
+  color: var(--text-newsletter);
+  padding: 15px;
+}
+
+form{
+  padding: 10px 0;
+}
+
+input{
+  color: var(--text-primary);
+  background-color: var(--input-bg);
+  width: 225px;
+  margin: 0 10px;
+  padding: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+input:hover{
+  background-color: var(--input-hover);
+  color: var(--input-hover-text);
+  transition: all 0.5s ease-in-out;
+}
+
+::placeholder{
+  color: var(--placeholder-color);
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+input:focus{
+  outline-width: 8;
+  outline-color: var(--outline-color);
+}
+
+.benefit-item{
+  padding: 10px 0;
+}
+#subscribe-btn{
+  width: 150px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 5px 0;
+  border: 1px solid var(--button-text);
+  transition: 0.5s all ease-in-out;
+}
+
+#subscribe-btn:hover{
+  background-color: var(--button-hover);
+  transition: 0.5s all ease-in-out;
+}
+}
 }
