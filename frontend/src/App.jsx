@@ -39,6 +39,21 @@ function App() {
           <div className="nav-tab"><a href="/about.html"><p className="menu-label">About</p></a></div>
           </nav>
           <div id="sections-area">
+            <section id="start-view">
+                <div id="intro-content">
+                  <p id="intro">
+                  The China<br></br> Tea Shop
+                  </p>
+                  <ul>
+                    <li>Located in Gliwice's Downtown since 2004</li>
+                    <li>Highest quality teas imported from China</li>
+                    <li>Variety of tastes and aromas</li>
+                  </ul>
+                </div>
+                <div id="teapot-cont">
+                  <img src="/images/chinese-teapot.png" alt="teapot" id="teapot-img"></img>
+                </div>
+            </section>
             <section>
               <article>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porta in quam non lacinia. Donec dolor dolor, fringilla id enim vitae, sagittis cursus velit. Nullam iaculis viverra orci, non dapibus risus bibendum vitae. In et libero in nibh consectetur eleifend eget nec eros. Pellentesque faucibus leo leo, quis cursus purus mollis nec. Cras dapibus porttitor accumsan. Maecenas ultrices, massa vel scelerisque maximus, nisl ex volutpat odio, at mattis neque purus vitae dolor. Proin felis eros, pulvinar quis leo quis, commodo tempor erat. Integer aliquet, diam in mollis posuere, dolor lorem suscipit metus, et accumsan ex lorem id dolor. Nullam porttitor erat nec consequat facilisis. Aliquam iaculis mattis efficitur. Curabitur ut porta augue. Proin leo diam, ultricies in mattis vel, mattis ut arcu.<br></br>
