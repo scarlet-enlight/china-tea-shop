@@ -26,6 +26,8 @@ services:
     build:
       context: ./frontend
     container_name: tea-shop-frontend
+    volumes:
+      - ./frontend/public:/usr/share/nginx/html:ro
     ports:
       - "3000:80"
     depends_on:

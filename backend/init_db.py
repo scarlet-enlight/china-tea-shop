@@ -1,3 +1,5 @@
+# file to initiate the database upon opening the website
+
 import os
 
 from config import app, db
