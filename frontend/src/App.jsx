@@ -23,20 +23,20 @@ function App() {
   return (
     <div id="container">
       <header>
-          <div><p id="title"><a href="index.html">China Tea Shop</a></p></div>
-          <div class="sidebar-tag"><img src="icons/lupe.png" alt="Lupe Icon" class="sidebar-icon"></img></div>
-          <div class="sidebar-tag"><a href="login.html"><img src="icons/user.png" alt="User Icon" class="sidebar-icon"></img></a></div>
-          <div class="sidebar-tag"><a href="yourshopcart.html"><img src="icons/shop-cart.png" alt="Shop Cart Icon" class="sidebar-icon"></img></a></div>
-          <div class="sidebar-tag"><img src="icons/sun.png" alt="Sun Icon" class="sidebar-icon"></img></div>
+          <div><p id="title"><a href="/">China Tea Shop</a></p></div>
+          <button className="sidebar-tag"><img src="/icons/lupe.png" alt="Lupe Icon" className="sidebar-icon"></img></button>
+          <button className="sidebar-tag"><a href="/login.html"><img src="/icons/user.png" alt="User Icon" className="sidebar-icon"></img></a></button>
+          <button className="sidebar-tag"><a href="/yourshopcart.html"><img src="/icons/shop-cart.png" alt="Shop Cart Icon" className="sidebar-icon"></img></a></button>
+          <button className="sidebar-tag" onClick={toggleDarkMode}><img src={isDarkMode ? "/icons/moon.png" : "/icons/sunny.png"} alt="Mode Icon" className="sidebar-icon" id="darkModeButton"></img></button>
       </header>
       <div id="background">
         <div class="deco-block"></div>
         <div>
           <nav>
-          <div class="nav-tab"><p class="menu-label">Home</p></div>
-          <div class="nav-tab"><p class="menu-label">Shop</p></div>
-          <div class="nav-tab"><p class="menu-label">Learn</p></div>
-          <div class="nav-tab"><p class="menu-label">About</p></div>
+          <div className="nav-tab"><a href="/"><p className="menu-label">Home</p></a></div>
+          <div className="nav-tab"><a href="/shop.html"><p className="menu-label">Shop</p></a></div>
+          <div className="nav-tab"><a href="/learn.html"><p className="menu-label">Learn</p></a></div>
+          <div className="nav-tab"><a href="/about.html"><p className="menu-label">About</p></a></div>
           </nav>
           <div id="sections-area">
             <section>
