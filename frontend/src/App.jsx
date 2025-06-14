@@ -178,6 +178,36 @@ function App() {
                 </div>
               </article>
             </section>
+            <section id="newsletter-section">
+              <div id="newsletter-content">
+                <h2>Stay Connected with Tea Wisdom</h2>
+                <p>Join our tea community and receive exclusive brewing tips, new product announcements, and special offers directly to your inbox.</p>
+                <form id="newsletter-form">
+                  <div id="form-group">
+                    <input type="email" id="email-input" placeholder="Enter your email address" required
+                    />
+                    <button type="submit" id="subscribe-btn">
+                      <span>Subscribe</span>
+                    </button>
+                  </div>
+                </form>
+                <div id="form-benefits">
+                  <div className="benefit-item">
+                    <span className="benefit-icon">🍃</span>
+                    <span>Weekly tea brewing tips</span>
+                  </div>
+                  <div className="benefit-item">
+                    <span className="benefit-icon">🎁</span>
+                    <span>Exclusive member discounts</span>
+                  </div>
+                  <div className="benefit-item">
+                    <span className="benefit-icon">📦</span>
+                    <span>First access to new teas</span>
+                  </div>
+                </div>
+                <p id="privacy-text">We respect your privacy. Unsubscribe at any time.</p>
+              </div>
+            </section>
           </div>
         </div>
         <div class="deco-block"></div>
