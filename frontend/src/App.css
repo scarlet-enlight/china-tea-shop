@@ -155,7 +155,11 @@ nav{
   border-right: 2px solid var(--input-bg);
   border-bottom: 2px solid var(--input-bg);
   margin: 0;
-  transition: all 2s ease;
+  transition: all 0.5s ease-in-out;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-tab:first-child{
@@ -165,6 +169,16 @@ nav{
 .nav-tab:last-child{
   border-right: 2px solid var(--input-bg);
 }
+
+.nav-tab a,
+.nav-tab a:link,
+.nav-tab a:visited {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: all 0.5s ease-in-out;
+    font-weight: normal;
+    text-shadow: none;
 }
 
 .nav-tab:hover {
