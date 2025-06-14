@@ -192,6 +192,88 @@ nav{
   color: var(--nav-text-hover);
   text-shadow: 2px 2px 4px var(--shadow-color);
   font-weight: 700;
+    text-decoration: none;
+}
+
+section:first-child{
+  width: 100%;
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: center;
+}
+
+#intro-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#teapot-cont{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 8%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+#teapot-img{
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  transition: all 1s ease-in-out;
+  border: 3px solid var(--input-bg);
+  border-radius: 45%;
+  display: block;
+  height: auto;
+}
+
+#teapot-img:hover{
+  max-height: 470px;
+  border: 7px solid var(--text-primary);
+  box-shadow: 9px 9px 3px var(--shadow-box);
+  transform: rotate(10deg);
+}
+
+#intro{
+  font-size: 70px;
+  font-family: 'Cantata One';
+  text-align: right;
+  text-shadow: 5px 5px 3px var(--shadow-text-alt);
+}
+
+section:first-child > #intro-content > ul > li {
+  list-style: none;
+  position: relative;
+  font-size: 25px;
+  padding-left: 70px;
+  margin-bottom: 15px;
+}
+
+section:first-child > #intro-content > ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 60%;
+  transform: translateY(-60%);
+  width: 40px;
+  height: 40px;
+  background-image: url(../public/images/china-letter.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+section:first-child > #intro-content > ul {
+  text-align: right;
+  padding-right: 0;
+  margin-right: 0;
+  text-shadow: var(--shadow-text-alt);
 }
 }
 
