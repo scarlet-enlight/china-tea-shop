@@ -78,6 +78,7 @@ body{
 #container{
   display: grid;
   text-align: center;
+  z-index: 0;
 }
 
 header{
@@ -149,7 +150,6 @@ nav{
   font-size: 18px;
   font-family: 'Cantata One';
   width: 10%;
-  color: rgb(238, 227, 224);
   background-color: var(--nav-bg);
   border-left: 2px solid var(--input-bg);
   border-right: 2px solid var(--input-bg);
@@ -183,15 +183,15 @@ nav{
 
 .nav-tab:hover {
     background-color: var(--nav-hover);
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .nav-tab:hover a,
 .nav-tab:hover a:link,
 .nav-tab:hover a:visited {
-  color: var(--nav-text-hover);
-  text-shadow: 2px 2px 4px var(--shadow-color);
-  font-weight: 700;
+    color: var(--nav-text-hover);
+    text-shadow: 2px 2px 4px var(--shadow-color);
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -284,7 +284,7 @@ section:nth-child(2){
 
 article{
   font-size: 25px;
-color: var(--text-secondary);
+  color: var(--text-secondary);
   padding: 10px 0 10px 0;
 }
 
@@ -372,5 +372,589 @@ footer{
   background-color: var(--button-hover);
   transition: 0.5s all ease-in-out;
 }
+
+/*computers and screens above Full HD*/
+@media screen and (min-width: 1921px) {
+  #title {
+    font-size: 2.7rem;
+    left: 42%;
+  }
+  
+  #intro {
+    font-size: 80px;
+  }
+  
+  section:first-child > #intro-content > ul > li {
+    font-size: 28px;
+  }
+  
+  #teapot-img {
+    max-height: 500px;
+  }
 }
+
+/*default css styling of blocks (no content because it's described above @media tag)*/
+@media screen and (min-width: 1200px) and (max-width: 1919px) {
+  #title {
+    font-size: 2.25rem;
+    top: -0.5%;
+    left: 30%;
+  }
+
+  header {
+    grid-template-columns: 70% repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
+
+  .sidebar-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .sidebar-tag {
+    height: 60px;
+  }
+  
+  #background {
+    grid-template-columns: 1fr min(95%, 1400px) 1fr;
+  }
+  
+  section:first-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Powrót do układu 2-kolumnowego */
+    gap: 3rem;
+    padding: 3rem 0;
+    align-items: center;
+  }
+
+  #teapot-img{
+    width: 90%;
+  }
+
+  #teas-recommend{
+    display: flex;
+  }
+
+  .tea-item{
+    font-size: 1.4rem;
+  }
+
+  #teas-gallery{
+    width: 40%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/*small PCs, large laptops*/
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  #title {
+    font-size: 38px;
+    left: 38%;
+    top: -20px;
+  }
+  
+  header {
+    grid-template-columns: 75% 1fr 1fr 1fr 1fr;
+  }
+  
+  .sidebar-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .sidebar-tag {
+    height: 50px;
+    padding: 10px;
+  }
+  
+  #intro {
+    font-size: 60px;
+  }
+  
+  section:first-child {
+    gap: 80px;
+    padding-top: 40px;
+  }
+  
+  section:first-child > #intro-content > ul > li {
+    font-size: 22px;
+  }
+  
+  #teapot-img {
+    width: 90%;
+    max-height: 400px;
+  }
+  
+  .nav-tab {
+    width: 12%;
+    font-size: 16px;
+  }
+
+  #teas-recommend{
+    display: flex;
+  }
+
+  .tea-item{
+    font-size: 1.2rem;
+  }
+
+  #teas-gallery{
+    width: 60%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* large tablets*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #title {
+    font-size: 220%;
+    left: 17.5%;
+    top: -2%;
+  }
+  
+  header {
+    grid-template-columns: 65% 1fr 1fr 1fr 1fr;
+  }
+  
+  .sidebar-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .sidebar-tag {
+    height: 40px;
+    padding: 8px;
+  }
+  
+  #background {
+    grid-template-columns: 3fr 94% 3fr;
+  }
+  
+  section:first-child {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  #intro-content {
+    align-items: center;
+    order: 1;
+  }
+  
+  #teapot-cont {
+    order: 2;
+    justify-content: center;
+    margin-top: 0;
+  }
+  
+  #intro {
+    font-size: 50px;
+    text-align: center;
+  }
+  
+  section:first-child > #intro-content > ul {
+    text-align: center;
+  }
+  
+  section:first-child > #intro-content > ul > li {
+    font-size: 20px;
+  }
+  
+  #teapot-img {
+    max-height: 350px;
+  }
+  
+  .nav-tab {
+    width: 15%;
+    font-size: 15px;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+  }
+
+  #teas-recommend{
+    display: flex;
+  }
+
+  .tea-item{
+    font-size: 1.2rem;
+  }
+
+  #teas-gallery{
+    width: 90%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* standard tablets (576px - 767px) */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  #title {
+    font-size: 150%;
+    left: 6%;
+    top: -10px;
+  }
+  
+  header {
+    grid-template-columns: 35% repeat(4, 1fr);
+    gap: 0.125rem;
+    padding: 0 0.5rem;
+  }
+  
+  .sidebar-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .sidebar-tag {
+    height: 35px;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #background {
+    grid-template-columns: 2fr 96% 2fr;
+  }
+  
+  section:first-child {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-top: 30px;
+    text-align: center;
+  }
+  
+  #intro-content {
+    align-items: center;
+  }
+  
+  #teapot-cont {
+    justify-content: center;
+    margin-top: 0;
+  }
+  
+  #intro {
+    font-size: 42px;
+    text-align: center;
+  }
+  
+  section:first-child > #intro-content > ul {
+    text-align: center;
+  }
+  
+  section:first-child > #intro-content > ul > li {
+    font-size: 18px;
+  }
+  
+  #teapot-img {
+    width: 70%;
+    max-height: 80%;
+  }
+  
+  .nav-tab {
+    width: 20%;
+    font-size: 14px;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+  }
+  
+  .menu-label {
+    margin: 8px 0;
+  }
+
+  .tea-item{
+    font-size: 1.2rem;
+    padding: 5%;
+  }
+
+  #teas-recommend{
+    display: block;
+  }
+
+  .tea-item{
+    font-size: 1.2rem;
+  }
+
+  #teas-gallery{
+    width: 87%;
+  }
+}
+
+/* standard mobile (480px - 575px) */
+@media screen and (min-width: 480px) and (max-width: 575px) {
+  #title {
+    font-size: 110%; 
+    top: -0.5%;
+    left: 8%;
+  }
+  
+  header {
+    grid-template-columns: 40% repeat(4, 1fr);
+    gap: 0.25rem;
+  }
+  
+  .sidebar-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .sidebar-tag {
+    height: 30px;
+    padding: 5px;
+  }
+  
+  #background {
+    grid-template-columns: 1fr min(98%, 1200px) 1fr;
+  }
+  
+  section:first-child {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    align-items: start;
+  }
+  
+  #intro {
+    font-size: 2.25rem;
+    text-align: center;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  #intro-content {
+    margin: 0 auto;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  section:first-child > #intro-content > ul {
+    width: 100%;
+    margin: 1rem auto;
+    padding-left: 0;
+    text-align: left;
+    display: inline-block;
+    max-width: 300px;
+  }
+
+  section:first-child > #intro-content > ul > li {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+    list-style-position: inside;
+  }
+  
+  #teapot-img {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .nav-tab {
+    width: 20%;
+  }
+  
+  article {
+    font-size: 1.25rem;
+    padding: 0.5rem 0;
+    line-height: 1.5;
+  }
+
+  .tea-product {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  #teas-recommend{
+    display: block;
+  }
+
+  #teas-gallery{
+    width: 85%;
+  }
+  
+  .tea-item {
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .tea-item h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .tea-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+/* mobile (up to 479px) */
+@media screen and (max-width: 479px) {
+  #title {
+    font-size: 85%;
+    left: 4%;
+    top: -0.25%;
+  }
+  
+  header {
+    grid-template-columns: 30% 1fr 1fr 1fr 1fr;
+  }
+  
+  .sidebar-icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .sidebar-tag {
+    height: 25px;
+    padding: 4px;
+  }
+  
+  #background {
+    grid-template-columns: 1fr;
+  }
+  
+  .deco-block {
+    display: none;
+  }
+  
+  section:first-child {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  #start-view{
+    padding: 0 3% 0 3%;
+    margin-top: 5%;
+  }
+  
+  #intro-content {
+    align-items: center;
+    order: 1;
+  }
+  
+  #teapot-cont {
+    order: 2;
+    justify-content: center;
+    margin-top: 0;
+  }
+  
+  #intro {
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  section:first-child > #intro-content > ul {
+    text-align: center;
+    padding: 0;
+    margin-right: 15%;
+  }
+  
+  section:first-child > #intro-content > ul > li {
+    font-size: 20%;
+  }
+  
+  #teapot-img {
+    width: 75%;
+  }
+
+  #teas-recommend{
+    display: block;
+  }
+
+  #teas-gallery{
+    width: 80%;
+  }
+  
+  .nav-tab {
+    width: 48%;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  
+  article {
+    font-size: 18px;
+    padding: 6px 0;
+  }
+  
+  .tea-item {
+    margin-bottom: 15px;
+  }
+  
+  .tea-item h3 {
+    font-size: 16px;
+  }
+  
+  .tea-item p {
+    font-size: 14px;
+  }
+}
+
+/* extremely small resolutions */
+@media screen and (max-width: 320px) {
+  #title {
+    font-size: 5%;
+    left: 1%;
+    top: 1%;
+  }
+  
+  #intro {
+    font-size: 26px;
+  }
+
+  #intro-content{
+    order: 1;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  #start-view{
+    padding: 0 3% 0 3%;
+    margin-top: 10%;
+  }
+  
+  section:first-child > #intro-content > ul > li {
+    font-size: 5%;
+    margin-left: -30px;
+  }
+  
+  #teapot-img {
+    width: 75%;
+    order: 2;
+  }
+  
+  .nav-tab {
+    font-size: 10px;
+  }
+
+  #teas-recommend{
+    display: block;
+  }
+
+  .tea-item{
+    font-size: 0.6rem;
+  }
+
+  #teas-gallery{
+    width: 80%;
+  }
 }
