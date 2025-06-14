@@ -275,14 +275,35 @@ section:first-child > #intro-content > ul {
   margin-right: 0;
   text-shadow: var(--shadow-text-alt);
 }
+
+section:nth-child(2){
+  background-color: var(--bg-secondary);
+  margin: 10% 0 0 0;
+  width: 100%;
 }
 
 article{
   font-size: 25px;
+color: var(--text-secondary);
+  padding: 10px 0 10px 0;
 }
 
-footer{
-  background-color: rgb(133, 54, 29);
+#teas-recommend{
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+#teas-gallery{
+  padding: 35px;
+  margin-top: 15px;
+  width: 650px;
+  max-height: 750px;
+}
+
+#tea-image-change{
+  transition: opacity 1s ease-in-out;
+  border: 6px solid var(--input-bg);
+  box-shadow: 4px 4px 2px var(--shadow-box);
 }
 
 a:link{
