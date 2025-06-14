@@ -11,6 +11,8 @@ function App() {
   const images = ["tea-image1.png", "tea-image2.png", "tea-image3.png", "tea-image4.png"];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imageOpacity, setImageOpacity] = useState(1);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   // fetching teas from backend
   useEffect(() => {
     if(sessionTeas && sessionTeas.length > 0){
