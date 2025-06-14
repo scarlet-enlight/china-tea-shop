@@ -102,35 +102,47 @@ header{
 
 .sidebar-tag{
   width: auto;
-  height: 60px;
+  height: 90px;
   background-color: var(--bg-primary);
   vertical-align: middle;
   border-left: 0.5px solid var(--border-color);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar-icon{
   width: 60px;
   height: 60px;
   text-align: center;
+  transition: all 0.2s ease;
+  display: block;
 }
 
 #background{
   background-color: var(--bg-primary);
+  background-image: url("../public/images/a.png");
   width: auto;
   height: auto;
   display: grid;
   grid-template-columns: 5fr 90% 5fr;
+  background-attachment: fixed;
 }
 
 .deco-block{
   background-color: var(--deco-bg);
 }
+
+#intro {
+  transition: font-size 0.2s ease;
 }
 
 nav{
   display: flex;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: center;
+  min-height: 50px;
 }
 
 .nav-tab{
