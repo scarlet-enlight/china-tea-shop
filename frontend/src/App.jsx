@@ -40,6 +40,17 @@ function App() {
     return () => clearInterval(interval);
   }, [images.length]);
 
+   useEffect(() => {
+    const savedMode = getCookie('darkMode');
+    if (savedMode === 'true') {
+      setIsDarkMode(true);
+      document.body.setAttribute('data-mode', 'dark-mode');
+    } else {
+      setIsDarkMode(false);
+      document.body.setAttribute('data-mode', 'light-mode');
+    }
+  }, []);
+
   // randomizing 3 teas to be shown at the site
   const fetchTeas = async (seed) => {
     try {
@@ -74,6 +85,40 @@ function App() {
 
     return array;
   }
+
+  // Cookie setting functions
+  const setCookie = (name, value, days = 365) => {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+  };
+
+  const getCookie = (name) => {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  };
+
+  // Dark mode toggling
+  const toggleDarkMode = () => {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    
+    if (newMode) {
+      document.body.setAttribute('data-mode', 'dark-mode');
+      setCookie('darkMode', 'true');
+    } else {
+      document.body.setAttribute('data-mode', 'light-mode');
+      setCookie('darkMode', 'false');
+    }
+  };
+
+  // inputting html tags into index.html template
   return (
     <div id="container">
       <header>
