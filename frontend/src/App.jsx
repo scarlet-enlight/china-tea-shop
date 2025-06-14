@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import './App.css';
 
@@ -131,7 +131,7 @@ function App() {
           <button className="sidebar-tag" onClick={toggleDarkMode}><img src={isDarkMode ? "/icons/moon.png" : "/icons/sunny.png"} alt="Mode Icon" className="sidebar-icon" id="darkModeButton"></img></button>
       </header>
       <div id="background">
-        <div class="deco-block"></div>
+        <div className="deco-block"></div>
         <div>
           <nav>
           <div className="nav-tab"><a href="/"><p className="menu-label">Home</p></a></div>
@@ -212,7 +212,7 @@ function App() {
             </section>
           </div>
         </div>
-        <div class="deco-block"></div>
+        <div className="deco-block"></div>
       </div>
       <footer>
         <p id="footer">© 2025 China Tea Shop - Traditional Teas, Modern Experience</p>
