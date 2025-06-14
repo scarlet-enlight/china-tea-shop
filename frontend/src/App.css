@@ -354,6 +354,11 @@ input:focus{
 .benefit-item{
   padding: 10px 0;
 }
+
+footer{
+  background-color: var(--bg-primary);
+}
+
 #subscribe-btn{
   width: 150px;
   background-color: var(--button-bg);
