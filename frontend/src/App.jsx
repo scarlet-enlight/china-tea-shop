@@ -1,12 +1,27 @@
-import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-import './App.css';
+import { useEffect, useState } from 'react';
+import {BrowserRouter, Routes, Route, Link, useLocation} from 'react-router-dom'
+// importing css files for styling
+import './css/Layout.css';
+import './css/HomePage.css';
+import './css/ShopPage.css';
+import './css/LearnPage.css';
+import './css/AboutPage.css';
+import './css/CartPage.css';
+import './css/LoginPage.css';
 
 // global variables for new session teas to make randomizer working properly
 let sessionTeas = null;
 let sessionSeed = null;
 
 function App() {
+  return (
+    <BrowserRouter>
+      <AppContent/>
+    </BrowserRouter>
+  );
+}
+
+function AppContent() {
   // main layout component responsible for baseplate for websites
   const Layout = ({ children, pageTitle = "China Tea Shop" }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -78,19 +93,19 @@ function App() {
   const Header = ({ isDarkMode, toggleDarkMode }) => {
     return (
       <header>
-        <div><p id="title"><a href="/">China Tea Shop</a></p></div>
+        <div><p id="title"><Link to="/">China Tea Shop</Link></p></div>
         <button className="sidebar-tag">
           <img src="/icons/lupe.png" alt="Lupe Icon" className="sidebar-icon" />
         </button>
         <button className="sidebar-tag">
-          <a href="/login.html">
+          <Link to="/login">
             <img src="/icons/user.png" alt="User Icon" className="sidebar-icon" />
-          </a>
+          </Link>
         </button>
         <button className="sidebar-tag">
-          <a href="/yourshopcart.html">
+          <Link to="/cart">
             <img src="/icons/shop-cart.png" alt="Shop Cart Icon" className="sidebar-icon" />
-          </a>
+          </Link>
         </button>
         <button className="sidebar-tag" onClick={toggleDarkMode}>
           <img 
@@ -106,28 +121,30 @@ function App() {
 
   // Navigation Component
   const Navigation = () => {
+    const location = useLocation();
+
     return (
       <nav>
-        <a href="/" className="nav-ref">
-          <div className="nav-tab">
+        <Link to="/" className="nav-ref">
+          <div className={`nav-tab ${location.pathname === '/' ? 'active' : ''}`}>
             <p className="menu-label">Home</p>
           </div>
-        </a>
-        <a href="/shop.html" className="nav-ref">
-          <div className="nav-tab">
+        </Link>
+        <Link to="/shop" className="nav-ref">
+          <div className={`nav-tab ${location.pathname === '/shop' ? 'active' : ''}`}>
             <p className="menu-label">Shop</p>
           </div>
-        </a>
-        <a href="/learn.html" className="nav-ref">
-          <div className="nav-tab">
+        </Link>
+        <Link to="/learn" className="nav-ref">
+          <div className={`nav-tab ${location.pathname === '/learn' ? 'active' : ''}`}>
             <p className="menu-label">Learn</p>
           </div>
-        </a>
-        <a href="/about.html" className="nav-ref">
-          <div className="nav-tab">
+        </Link>
+        <Link to="/about" className="nav-ref">
+          <div className={`nav-tab ${location.pathname === '/about' ? 'active' : ''}`}>
             <p className="menu-label">About</p>
           </div>
-        </a>
+        </Link>
       </nav>
     );
   };
@@ -397,7 +414,14 @@ function App() {
 
   // returning HomePage
   return (
-    <HomePage></HomePage>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/learn" element={<LearnPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
   );
 }
 
