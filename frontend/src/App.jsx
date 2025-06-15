@@ -378,8 +378,6 @@ function AppContent() {
     const [teas, setTeas] = useState([]);
 
     // fetching teas from backend
-          <div id="avaiable-products">
-            <div id="title-block">
     useEffect(() => {
       fetchTeas();
     }, []);
