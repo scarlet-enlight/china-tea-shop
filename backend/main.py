@@ -1,9 +1,9 @@
 # main python file for API output in backend subpages (where main is localhost:5000)
 
 from config import app, db
-from flask import jsonify, request, render_template
+from flask import jsonify, request
 from models import CartItem, Tea, NewsletterEmail
-import re
+# import re
 from flask import send_from_directory
 
 @app.route("/teas", methods=["GET"])
