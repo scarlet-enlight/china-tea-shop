@@ -399,7 +399,7 @@ function AppContent() {
         <section id="shop-content">
           <div id="avaiable-products">
             <div id="title-block">
-          <h1>Our Tea Collection</h1>
+              <h1>Our Tea Collection</h1>
             </div>
             <h2>🍃 Premium Tea Collection 🍃</h2>
             <p>Discover our handpicked selection of authentic Chinese teas, sourced directly from traditional tea gardens.</p>
