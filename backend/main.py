@@ -4,7 +4,7 @@ from config import app, db
 from flask import jsonify, request, render_template
 from models import CartItem, Tea, NewsletterEmail
 import re
-
+from flask import send_from_directory
 
 @app.route("/teas", methods=["GET"])
 def get_teas():
@@ -102,9 +102,9 @@ def get_email():
     emails = [{"email": item.id, **item.tea.to_json()} for item in items]
     return jsonify({"emails": emails})
 
-@app.route("/")
-def home():
-    return render_template("../frontend/public/src/App.jsx")
+@app.route('/')
+def serve_react_index():
+    return send_from_directory('../frontend/build', 'index.html')
 
 
 # For Jenkins test stage
