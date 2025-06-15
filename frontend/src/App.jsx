@@ -158,7 +158,7 @@ function AppContent() {
     );
   };
 
-  // Newsletter Component (mian page exclusive)
+  // Newsletter Component (main page exclusive)
   const NewsletterSection = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -200,7 +200,7 @@ function AppContent() {
     return (
       <section id="newsletter-section">
         <div id="newsletter-content">
-          <h2>Stay Connected with Tea Wisdom</h2>
+          <h2 id="newsletter-title">Stay Connected with Tea Wisdom</h2>
           <p>Join our tea community and receive exclusive brewing tips, new product announcements, and special offers directly to your inbox.</p>
           
           <form id="newsletter-form" onSubmit={handleSubmit}>
