@@ -1,8 +1,9 @@
 # main python file for API output in backend subpages (where main is localhost:5000)
 
 from config import app, db
-from flask import jsonify, request
-from models import CartItem, Tea
+from flask import jsonify, request, render_template
+from models import CartItem, Tea, NewsletterEmail
+import re
 
 
 @app.route("/teas", methods=["GET"])
@@ -75,10 +76,35 @@ def buy_cart():
 
     return jsonify({"message": f"You bought: {names}. Total price: ${total:.2f}"}), 200
 
+# @app.route("/subscribe_newsletter", methods=["POST"])
+# def buy_cart():
+#     data = request.json
+#     email = data.get("email")
+
+#     if not email:
+#         return jsonify({"message": "Email is required."}), 400
+
+#     email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+#     if not re.match(email_pattern, email):
+#         return jsonify({"message": "Email does not match to the pattern."}), 400
+
+#     existing_email = NewsletterEmail.query.filter_by(email=email).first()
+#     if(existing_email):
+#         return jsonify({"message": "You are already subscribed by this email."}), 409
+    
+#     new_email = NewsletterEmail(email=email)
+#     db.session.add(new_email)
+#     db.session.commit()
+
+@app.route("/get_emails", methods=["GET"])
+def get_email():
+    items = NewsletterEmail.query.all()
+    emails = [{"email": item.id, **item.tea.to_json()} for item in items]
+    return jsonify({"emails": emails})
 
 @app.route("/")
 def home():
-    return "Welcome to the Chinese tea store!"
+    return render_template("../frontend/public/src/App.jsx")
 
 
 # For Jenkins test stage
