@@ -37,3 +37,13 @@ class CartItem(db.Model):
 # class FinanceCard(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     money = db.Column(db.Float, nullable=False)
+
+class NewsletterEmail(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), nullable=False)
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "name": self.email
+        }
