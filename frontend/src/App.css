@@ -5,11 +5,12 @@
   --bg-newsletter: rgb(22, 25, 27);
   --text-primary: rgb(238, 227, 224);
   --text-secondary: rgb(22, 25, 27);
-  --text-newsletter: white;
+  --text-newsletter: rgb(238, 227, 224);
   --border-color: rgba(32, 27, 27, 0.75);
+  --nav-text: rgb(22, 25, 27);
   --nav-bg: rgba(211, 192, 22, 0.87);
   --nav-hover: rgb(9, 156, 224);
-  --nav-text-hover: black;
+  --nav-text-hover: rgb(238, 227, 224);
   --input-bg: rgb(49, 52, 54);
   --input-hover: rgba(211, 192, 22, 0.87);
   --input-hover-text: rgb(9, 156, 224);
@@ -19,7 +20,7 @@
   --shadow-color: rgba(0, 0, 0, 0.3);
   --shadow-text: rgb(49, 52, 54);
   --shadow-text-alt: rgb(49, 52, 54);
-  --shadow-box: black;
+  --shadow-box: rgba(0, 0, 0, 0.3);
   --placeholder-color: rgb(133, 54, 29);
   --visited-link: rgb(49, 52, 54);
   --outline-color: rgb(133, 54, 29);
@@ -36,9 +37,10 @@
   --text-secondary: rgb(255, 250, 250);
   --text-newsletter: rgb(255, 255, 255);
   --border-color: rgb(214, 214, 214);
+  --nav-text: rgb(22, 25, 27);
   --nav-bg: rgba(156, 219, 84, 1);
   --nav-hover: rgba(99, 114, 83, 1);
-  --nav-text-hover: white;
+  --nav-text-hover: rgb(238, 227, 224);
   --input-bg: rgb(11, 22, 87);
   --input-hover: rgb(156, 219, 84);
   --input-hover-text: rgb(11, 22, 87);
@@ -50,7 +52,7 @@
   --shadow-text-alt: rgb(49, 52, 54);
   --shadow-box: rgba(156, 219, 84, 0.3);
   --placeholder-color: rgb(156, 219, 84);
-  --visited-link: rgb(156, 219, 84);
+  --visited-link: rgb(49, 52, 54);
   --outline-color: rgb(156, 219, 84);
   --tea-item-bg: rgba(156, 219, 84, 0.1);
   --deco-bg: rgba(41, 35, 29, 0.95);
@@ -123,7 +125,7 @@ header{
 
 #background{
   background-color: var(--bg-primary);
-  background-image: url("../public/images/a.png");
+  background-image: url("../public/images/a.png");  /* must be changed to photo with better resolution ASAP */
   width: auto;
   height: auto;
   display: grid;
@@ -146,53 +148,38 @@ nav{
   min-height: 50px;
 }
 
-.nav-tab{
-  font-size: 18px;
+.nav-ref{
+  font-size: 1.25rem;
   font-family: 'Cantata One';
   width: 10%;
   background-color: var(--nav-bg);
   border-left: 2px solid var(--input-bg);
   border-right: 2px solid var(--input-bg);
   border-bottom: 2px solid var(--input-bg);
+  color: var(--nav-text);
   margin: 0;
   transition: all 0.5s ease-in-out;
   min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
-.nav-tab:first-child{
+.nav-ref:first-child{
   border-left: 2px solid var(--input-bg);
 }
 
-.nav-tab:last-child{
+.nav-ref:last-child{
   border-right: 2px solid var(--input-bg);
 }
 
-.nav-tab a,
-.nav-tab a:link,
-.nav-tab a:visited {
-    color: white;
-    text-decoration: none;
-    display: block;
-    transition: all 0.5s ease-in-out;
-    font-weight: normal;
-    text-shadow: none;
-}
-
-.nav-tab:hover {
+.nav-ref:hover {
     background-color: var(--nav-hover);
     cursor: pointer;
-}
-
-.nav-tab:hover a,
-.nav-tab:hover a:link,
-.nav-tab:hover a:visited {
     color: var(--nav-text-hover);
-    text-shadow: 2px 2px 4px var(--shadow-color);
     font-weight: 700;
-    text-decoration: none;
+    text-shadow: 2px 2px 4px var(--shadow-color);
 }
 
 section:first-child{
@@ -397,14 +384,12 @@ footer{
 @media screen and (min-width: 1200px) and (max-width: 1919px) {
   #title {
     font-size: 2.25rem;
-    top: -0.5%;
+    top: -2.5%;
     left: 30%;
   }
 
   header {
     grid-template-columns: 70% repeat(4, 1fr);
-    gap: 1rem;
-    padding: 1rem 2rem;
   }
 
   .sidebar-icon {
@@ -422,7 +407,7 @@ footer{
   
   section:first-child {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Powrót do układu 2-kolumnowego */
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
     padding: 3rem 0;
     align-items: center;
@@ -450,9 +435,9 @@ footer{
 /*small PCs, large laptops*/
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   #title {
-    font-size: 38px;
+    font-size: 1.9rem;
     left: 38%;
-    top: -20px;
+    top: -2.25%;
   }
   
   header {
@@ -460,8 +445,8 @@ footer{
   }
   
   .sidebar-icon {
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    max-height: 40px;
   }
   
   .sidebar-tag {
@@ -487,7 +472,7 @@ footer{
     max-height: 400px;
   }
   
-  .nav-tab {
+  .nav-ref {
     width: 12%;
     font-size: 16px;
   }
@@ -510,8 +495,8 @@ footer{
 /* large tablets*/
 @media screen and (min-width: 768px) and (max-width: 991px) {
   #title {
-    font-size: 220%;
-    left: 17.5%;
+    font-size: 175%;
+    left: 25%;
     top: -2%;
   }
   
@@ -567,9 +552,9 @@ footer{
     max-height: 350px;
   }
   
-  .nav-tab {
-    width: 15%;
-    font-size: 15px;
+  .nav-ref {
+    width: 12%;
+    font-size: 1rem;
   }
   
   nav {
@@ -601,8 +586,6 @@ footer{
   
   header {
     grid-template-columns: 35% repeat(4, 1fr);
-    gap: 0.125rem;
-    padding: 0 0.5rem;
   }
   
   .sidebar-icon {
@@ -611,8 +594,7 @@ footer{
   }
   
   .sidebar-tag {
-    height: 35px;
-    padding: 6px 0;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -656,9 +638,9 @@ footer{
     max-height: 80%;
   }
   
-  .nav-tab {
-    width: 20%;
-    font-size: 14px;
+  .nav-ref {
+    width: 12%;
+    font-size: 1rem;
   }
   
   nav {
@@ -690,19 +672,18 @@ footer{
 /* standard mobile (480px - 575px) */
 @media screen and (min-width: 480px) and (max-width: 575px) {
   #title {
-    font-size: 110%; 
-    top: -0.5%;
-    left: 8%;
+    font-size: 100%; 
+    top: -0.75%;
+    left: 12%;
   }
   
   header {
-    grid-template-columns: 40% repeat(4, 1fr);
-    gap: 0.25rem;
+    grid-template-columns: 50% repeat(4, 1fr);
   }
   
   .sidebar-icon {
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
   }
   
   .sidebar-tag {
@@ -759,8 +740,9 @@ footer{
     margin: 0 auto;
   }
   
-  .nav-tab {
-    width: 20%;
+  .nav-ref {
+    width: 12%;
+    font-size: 0.8rem;
   }
   
   article {
@@ -806,7 +788,7 @@ footer{
   #title {
     font-size: 85%;
     left: 4%;
-    top: -0.25%;
+    top: -0.5%;
   }
   
   header {
@@ -880,15 +862,17 @@ footer{
     width: 80%;
   }
   
-  .nav-tab {
-    width: 48%;
-    font-size: 11px;
+  .nav-ref {
+    width: 26%;
+    font-size: 0.8rem;
+  }
+
+  .nav-ref:last-child{
     margin-bottom: 2px;
   }
   
   nav {
     flex-wrap: wrap;
-    gap: 2px;
   }
   
   article {
@@ -913,8 +897,8 @@ footer{
 @media screen and (max-width: 320px) {
   #title {
     font-size: 5%;
-    left: 1%;
-    top: 1%;
+    left: 2%;
+    top: 0.5%;
   }
   
   #intro {
@@ -942,8 +926,8 @@ footer{
     order: 2;
   }
   
-  .nav-tab {
-    font-size: 10px;
+  .nav-ref {
+    font-size: 0.8rem;
   }
 
   #teas-recommend{

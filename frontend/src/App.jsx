@@ -6,7 +6,28 @@ let sessionTeas = null;
 let sessionSeed = null;
 
 function App() {
-  // comments only temporary
+      <nav>
+        <a href="/" className="nav-ref">
+          <div className="nav-tab">
+            <p className="menu-label">Home</p>
+          </div>
+        </a>
+        <a href="/shop.html" className="nav-ref">
+          <div className="nav-tab">
+            <p className="menu-label">Shop</p>
+          </div>
+        </a>
+        <a href="/learn.html" className="nav-ref">
+          <div className="nav-tab">
+            <p className="menu-label">Learn</p>
+          </div>
+        </a>
+        <a href="/about.html" className="nav-ref">
+          <div className="nav-tab">
+            <p className="menu-label">About</p>
+          </div>
+        </a>
+      </nav>
   const [teas, setTeas] = useState([]);
   const images = ["tea-image1.png", "tea-image2.png", "tea-image3.png", "tea-image4.png"];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
