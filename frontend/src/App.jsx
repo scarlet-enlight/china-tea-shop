@@ -375,12 +375,50 @@ function AppContent() {
 
   // Shop Page content
   const ShopPage = () => {
+    const [teas, setTeas] = useState([]);
+
+    // fetching teas from backend
+          <div id="avaiable-products">
+            <div id="title-block">
+    useEffect(() => {
+      fetchTeas();
+    }, []);
+
+    const fetchTeas = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/teas");
+        const data = await response.json();
+        setTeas(data.teas);
+        
+      } catch (error) {
+        console.error('Error fetching teas:', error);
+        setTeas([]);
+      }
+    }
+
     return (
       <Layout pageTitle="Shop - China Tea Shop">
         <section id="shop-content">
+          <div id="avaiable-products">
+            <div id="title-block">
           <h1>Our Tea Collection</h1>
-          <p>Browse our extensive collection of premium Chinese teas.</p>
-          {/* Tutaj będzie zawartość sklepu */}
+            </div>
+            <h2>🍃 Premium Tea Collection 🍃</h2>
+            <p>Discover our handpicked selection of authentic Chinese teas, sourced directly from traditional tea gardens.</p>
+            <div id="tea-products-shop">
+              {teas.length > 0 ? (
+                teas.map((tea) => (
+                  <div key={tea.id} className="tea-item-shop">
+                    <h3>{tea.name}</h3>
+                    <p>{tea.description}</p>
+                    <p>Price: {tea.price} PLN</p>
+                  </div>
+                ))
+              ) : (
+                <p>Currently no teas available. Check out our offer later!</p>
+              )}
+            </div>
+          </div>
         </section>
       </Layout>
     );
@@ -393,7 +431,38 @@ function AppContent() {
         <section id="learn-content">
           <h1>Tea Knowledge Center</h1>
           <p>Learn about tea brewing, history, and culture.</p>
-          {/* Tutaj będzie zawartość edukacyjna */}
+          <div className="learn-education">
+            <h2>📚 Tea Education 📚</h2>
+            <div className="learn-grid">
+              <div className="learn-card">
+                <h3>☕ Brewing Techniques</h3>
+                <p>Master the art of tea preparation with our step-by-step guides for different tea types.</p>
+                <ul>
+                  <li>Water temperature guidelines</li>
+                  <li>Steeping times for optimal flavor</li>
+                  <li>Traditional brewing methods</li>
+                </ul>
+              </div>
+              <div className="learn-card">
+                <h3>🏛️ Tea History</h3>
+                <p>Discover the rich history and cultural significance of Chinese tea traditions.</p>
+                <ul>
+                  <li>Origins of tea cultivation</li>
+                  <li>Tea ceremony traditions</li>
+                  <li>Regional tea cultures</li>
+                </ul>
+              </div>
+              <div className="learn-card">
+                <h3>🌿 Health Benefits</h3>
+                <p>Learn about the health benefits and wellness properties of different teas.</p>
+                <ul>
+                  <li>Antioxidant properties</li>
+                  <li>Digestive benefits</li>
+                  <li>Mental wellness effects</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
       </Layout>
     );
@@ -406,13 +475,86 @@ function AppContent() {
         <section id="about-content">
           <h1>About China Tea Shop</h1>
           <p>Learn about our story and commitment to quality tea.</p>
-          {/* Tutaj będzie zawartość o firmie */}
+          <div className="about-container">
+            <h2>🏪 Our Story</h2>
+            <p>
+              Founded in 2004 in the heart of Gliwice's downtown, China Tea Shop has been a beacon for tea enthusiasts 
+              seeking authentic Chinese tea experiences. Our journey began with a simple mission: to bring the finest 
+              traditional Chinese teas directly from their source to tea lovers in Poland.
+            </p>
+            <h3>🎯 Our Mission</h3>
+            <p>
+              We are dedicated to preserving the ancient art of tea cultivation and preparation while making these 
+              treasured beverages accessible to modern tea enthusiasts. Every tea in our collection is carefully 
+              selected from trusted tea gardens across China.
+            </p>
+            <h3>🌟 What Sets Us Apart</h3>
+            <ul>
+              <li><strong>Direct Sourcing:</strong> We work directly with tea farmers and gardens</li>
+              <li><strong>Quality Assurance:</strong> Every batch is tested for quality and authenticity</li>
+              <li><strong>Expert Knowledge:</strong> Our team consists of certified tea specialists</li>
+              <li><strong>Community Focus:</strong> We host regular tea tastings and educational events</li>
+            </ul>
+            <div className="store-info">
+              <h3>📍 Visit Our Store</h3>
+              <p><strong>Address:</strong> Downtown Gliwice, Poland</p>
+              <p><strong>Since:</strong> 2004</p>
+              <p><strong>Specialty:</strong> Authentic Chinese Teas</p>
+            </div>
+          </div>
         </section>
       </Layout>
     );
   };
 
-  // returning HomePage
+  // Cart Page content
+  const CartPage = () => {
+    return (
+      <Layout pageTitle="Shopping Cart - China Tea Shop">
+        <section id="cart-content">
+          <h1>Your Shopping Cart</h1>
+          <p>Your cart is currently empty.</p>
+          <div className="cart-empty">
+            <p>Start shopping to add items to your cart!</p>
+            <Link to="/shop" className="cart-link">
+              Browse Our Teas
+            </Link>
+          </div>
+        </section>
+      </Layout>
+    );
+  };
+
+  // Login Page content
+  const LoginPage = () => {
+    return (
+      <Layout pageTitle="Login - China Tea Shop">
+        <section id="login-content">
+          <h1>Login to Your Account</h1>
+          <div className="login-container">
+            <form className="login-form">
+              <input 
+                type="email" 
+                placeholder="Email address" 
+              />
+              <input 
+                type="password" 
+                placeholder="Password" 
+              />
+              <button type="submit">
+                Login
+              </button>
+            </form>
+            <p className="login-signup">
+              Don't have an account? <a href="#">Sign up here</a>
+            </p>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
+
+  // returning routes to subpages
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
