@@ -1,0 +1,112 @@
+#sections-area:has(#shop-content) { /*if has this tag inside, it does things nested*/
+    margin-bottom: 50px;
+}
+
+#shop-content{
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px var(--shadow-box);
+    min-height: 70vh;
+    display: inline-block;
+    margin: 5% auto 0;
+    width: 80%;
+}
+
+#title-block{
+    background-color: var(--bg-primary);
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+h1, h2{
+    color: var(--text-secondary);
+    text-shadow: 2px 2px 2px var(--shadow-text);
+}
+
+#avaiable-products > *{
+    color: var(--text-secondary);
+}
+
+.tea-item-shop:first-child{
+    border-top: 2px solid var(--border-color);
+}
+
+.tea-item-shop{
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px 0;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tea-item-shop:last-child{
+    border-bottom: none;
+}
+
+/*computers and screens above Full HD*/
+@media screen and (min-width: 1921px) {
+
+}
+
+/*default css styling of blocks (no content because it's described above @media tag)*/
+@media screen and (min-width: 1200px) and (max-width: 1919px) {
+
+}
+
+/*small PCs, large laptops*/
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* large tablets*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    h1, h2, h3{
+        font-size: 1.3rem;
+    }
+    p{
+        font-size: 0.8rem;
+    }
+}
+
+/* standard tablets (576px - 767px) */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+    h1, h2, h3{
+        font-size: 1rem;
+    }
+    p{
+        font-size: 0.8rem;
+    }
+}
+
+/* standard mobile (480px - 575px) */
+@media screen and (min-width: 480px) and (max-width: 575px) {
+    h1, h2, h3{
+        font-size: 0.9rem;
+    }
+    p{
+        font-size: 0.7rem;
+    }
+}
+
+/* mobile (up to 479px) */
+@media screen and (max-width: 479px) {
+    h1, h2, h3{
+        font-size: 0.8rem;
+    }
+    p{
+        font-size: 0.7rem;
+    }
+}
+
+/* extremely small resolutions */
+@media screen and (max-width: 320px) {
+    h1, h2, h3{
+        font-size: 0.6rem;
+    }
+    p{
+        font-size: 0.5rem;
+    }
+}
