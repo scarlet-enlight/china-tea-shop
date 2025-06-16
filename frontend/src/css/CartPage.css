@@ -1,0 +1,95 @@
+#sections-area:has(#cart-content) { /*if has this tag inside, it does things nested*/
+    margin-bottom: 30px;
+}
+
+#cart-content {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px var(--shadow-box);
+    min-height: 70vh;
+    text-align: center;
+    width: 80%;
+    margin: 5% auto 0;
+}
+
+#cart-content h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+#cart-content > p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cart-empty {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.cart-empty p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.cart-link {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px var(--shadow-box);
+}
+
+.cart-link:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-box);
+}
+
+
+/*computers and screens above Full HD*/
+@media screen and (min-width: 1921px) {
+
+}
+
+/*default css styling of blocks (no content because it's described above @media tag)*/
+@media screen and (min-width: 1200px) and (max-width: 1919px) {
+
+}
+
+/*small PCs, large laptops*/
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* large tablets*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* standard tablets (576px - 767px) */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+
+}
+
+/* standard mobile (480px - 575px) */
+@media screen and (min-width: 480px) and (max-width: 575px) {
+
+}
+
+/* mobile (up to 479px) */
+@media screen and (max-width: 479px) {
+
+}
+
+/* extremely small resolutions */
+@media screen and (max-width: 320px) {
+
+}

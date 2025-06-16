@@ -1,12 +1,27 @@
-import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-import './App.css';
+import { useEffect, useState } from 'react';
+import {BrowserRouter, Routes, Route, Link, useLocation} from 'react-router-dom'
+// importing css files for styling
+import './css/Layout.css';
+import './css/HomePage.css';
+import './css/ShopPage.css';
+import './css/LearnPage.css';
+import './css/AboutPage.css';
+import './css/CartPage.css';
+import './css/LoginPage.css';
 
 // global variables for new session teas to make randomizer working properly
 let sessionTeas = null;
 let sessionSeed = null;
 
 function App() {
+  return (
+    <BrowserRouter>
+      <AppContent/>
+    </BrowserRouter>
+  );
+}
+
+function AppContent() {
   // main layout component responsible for baseplate for websites
   const Layout = ({ children, pageTitle = "China Tea Shop" }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -78,19 +93,19 @@ function App() {
   const Header = ({ isDarkMode, toggleDarkMode }) => {
     return (
       <header>
-        <div><p id="title"><a href="/">China Tea Shop</a></p></div>
+        <div><p id="title"><Link to="/">China Tea Shop</Link></p></div>
         <button className="sidebar-tag">
           <img src="/icons/lupe.png" alt="Lupe Icon" className="sidebar-icon" />
         </button>
         <button className="sidebar-tag">
-          <a href="/login.html">
+          <Link to="/login">
             <img src="/icons/user.png" alt="User Icon" className="sidebar-icon" />
-          </a>
+          </Link>
         </button>
         <button className="sidebar-tag">
-          <a href="/yourshopcart.html">
+          <Link to="/cart">
             <img src="/icons/shop-cart.png" alt="Shop Cart Icon" className="sidebar-icon" />
-          </a>
+          </Link>
         </button>
         <button className="sidebar-tag" onClick={toggleDarkMode}>
           <img 
@@ -106,28 +121,30 @@ function App() {
 
   // Navigation Component
   const Navigation = () => {
+    const location = useLocation();
+
     return (
       <nav>
-        <a href="/" className="nav-ref">
-          <div className="nav-tab">
+        <Link to="/" className="nav-ref">
+          <div className={`nav-tab ${location.pathname === '/' ? 'active' : ''}`}>
             <p className="menu-label">Home</p>
           </div>
-        </a>
-        <a href="/shop.html" className="nav-ref">
-          <div className="nav-tab">
+        </Link>
+        <Link to="/shop" className="nav-ref">
+          <div className={`nav-tab ${location.pathname === '/shop' ? 'active' : ''}`}>
             <p className="menu-label">Shop</p>
           </div>
-        </a>
-        <a href="/learn.html" className="nav-ref">
-          <div className="nav-tab">
+        </Link>
+        <Link to="/learn" className="nav-ref">
+          <div className={`nav-tab ${location.pathname === '/learn' ? 'active' : ''}`}>
             <p className="menu-label">Learn</p>
           </div>
-        </a>
-        <a href="/about.html" className="nav-ref">
-          <div className="nav-tab">
+        </Link>
+        <Link to="/about" className="nav-ref">
+          <div className={`nav-tab ${location.pathname === '/about' ? 'active' : ''}`}>
             <p className="menu-label">About</p>
           </div>
-        </a>
+        </Link>
       </nav>
     );
   };
@@ -141,7 +158,7 @@ function App() {
     );
   };
 
-  // Newsletter Component (mian page exclusive)
+  // Newsletter Component (main page exclusive)
   const NewsletterSection = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -183,7 +200,7 @@ function App() {
     return (
       <section id="newsletter-section">
         <div id="newsletter-content">
-          <h2>Stay Connected with Tea Wisdom</h2>
+          <h2 id="newsletter-title">Stay Connected with Tea Wisdom</h2>
           <p>Join our tea community and receive exclusive brewing tips, new product announcements, and special offers directly to your inbox.</p>
           
           <form id="newsletter-form" onSubmit={handleSubmit}>
@@ -358,12 +375,48 @@ function App() {
 
   // Shop Page content
   const ShopPage = () => {
+    const [teas, setTeas] = useState([]);
+
+    // fetching teas from backend
+    useEffect(() => {
+      fetchTeas();
+    }, []);
+
+    const fetchTeas = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/teas");
+        const data = await response.json();
+        setTeas(data.teas);
+        
+      } catch (error) {
+        console.error('Error fetching teas:', error);
+        setTeas([]);
+      }
+    }
+
     return (
       <Layout pageTitle="Shop - China Tea Shop">
         <section id="shop-content">
-          <h1>Our Tea Collection</h1>
-          <p>Browse our extensive collection of premium Chinese teas.</p>
-          {/* Tutaj będzie zawartość sklepu */}
+          <div id="avaiable-products">
+            <div id="title-block">
+              <h1>Our Tea Collection</h1>
+            </div>
+            <h2>🍃 Premium Tea Collection 🍃</h2>
+            <p>Discover our handpicked selection of authentic Chinese teas, sourced directly from traditional tea gardens.</p>
+            <div id="tea-products-shop">
+              {teas.length > 0 ? (
+                teas.map((tea) => (
+                  <div key={tea.id} className="tea-item-shop">
+                    <h3>{tea.name}</h3>
+                    <p>{tea.description}</p>
+                    <p>Price: {tea.price} PLN</p>
+                  </div>
+                ))
+              ) : (
+                <p>Currently no teas available. Check out our offer later!</p>
+              )}
+            </div>
+          </div>
         </section>
       </Layout>
     );
@@ -376,7 +429,38 @@ function App() {
         <section id="learn-content">
           <h1>Tea Knowledge Center</h1>
           <p>Learn about tea brewing, history, and culture.</p>
-          {/* Tutaj będzie zawartość edukacyjna */}
+          <div className="learn-education">
+            <h2>📚 Tea Education 📚</h2>
+            <div className="learn-grid">
+              <div className="learn-card">
+                <h3>☕ Brewing Techniques</h3>
+                <p>Master the art of tea preparation with our step-by-step guides for different tea types.</p>
+                <ul>
+                  <li>Water temperature guidelines</li>
+                  <li>Steeping times for optimal flavor</li>
+                  <li>Traditional brewing methods</li>
+                </ul>
+              </div>
+              <div className="learn-card">
+                <h3>🏛️ Tea History</h3>
+                <p>Discover the rich history and cultural significance of Chinese tea traditions.</p>
+                <ul>
+                  <li>Origins of tea cultivation</li>
+                  <li>Tea ceremony traditions</li>
+                  <li>Regional tea cultures</li>
+                </ul>
+              </div>
+              <div className="learn-card">
+                <h3>🌿 Health Benefits</h3>
+                <p>Learn about the health benefits and wellness properties of different teas.</p>
+                <ul>
+                  <li>Antioxidant properties</li>
+                  <li>Digestive benefits</li>
+                  <li>Mental wellness effects</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
       </Layout>
     );
@@ -389,15 +473,95 @@ function App() {
         <section id="about-content">
           <h1>About China Tea Shop</h1>
           <p>Learn about our story and commitment to quality tea.</p>
-          {/* Tutaj będzie zawartość o firmie */}
+          <div className="about-container">
+            <h2>🏪 Our Story</h2>
+            <p>
+              Founded in 2004 in the heart of Gliwice's downtown, China Tea Shop has been a beacon for tea enthusiasts 
+              seeking authentic Chinese tea experiences. Our journey began with a simple mission: to bring the finest 
+              traditional Chinese teas directly from their source to tea lovers in Poland.
+            </p>
+            <h3>🎯 Our Mission</h3>
+            <p>
+              We are dedicated to preserving the ancient art of tea cultivation and preparation while making these 
+              treasured beverages accessible to modern tea enthusiasts. Every tea in our collection is carefully 
+              selected from trusted tea gardens across China.
+            </p>
+            <h3>🌟 What Sets Us Apart</h3>
+            <ul>
+              <li><strong>Direct Sourcing:</strong> We work directly with tea farmers and gardens</li>
+              <li><strong>Quality Assurance:</strong> Every batch is tested for quality and authenticity</li>
+              <li><strong>Expert Knowledge:</strong> Our team consists of certified tea specialists</li>
+              <li><strong>Community Focus:</strong> We host regular tea tastings and educational events</li>
+            </ul>
+            <div className="store-info">
+              <h3>📍 Visit Our Store</h3>
+              <p><strong>Address:</strong> Downtown Gliwice, Poland</p>
+              <p><strong>Since:</strong> 2004</p>
+              <p><strong>Specialty:</strong> Authentic Chinese Teas</p>
+            </div>
+          </div>
         </section>
       </Layout>
     );
   };
 
-  // returning HomePage
+  // Cart Page content
+  const CartPage = () => {
+    return (
+      <Layout pageTitle="Shopping Cart - China Tea Shop">
+        <section id="cart-content">
+          <h1>Your Shopping Cart</h1>
+          <p>Your cart is currently empty.</p>
+          <div className="cart-empty">
+            <p>Start shopping to add items to your cart!</p>
+            <Link to="/shop" className="cart-link">
+              Browse Our Teas
+            </Link>
+          </div>
+        </section>
+      </Layout>
+    );
+  };
+
+  // Login Page content
+  const LoginPage = () => {
+    return (
+      <Layout pageTitle="Login - China Tea Shop">
+        <section id="login-content">
+          <h1>Login to Your Account</h1>
+          <div className="login-container">
+            <form className="login-form">
+              <input 
+                type="email" 
+                placeholder="Email address" 
+              />
+              <input 
+                type="password" 
+                placeholder="Password" 
+              />
+              <button type="submit">
+                Login
+              </button>
+            </form>
+            <p className="login-signup">
+              Don't have an account? <a href="#">Sign up here</a>
+            </p>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
+
+  // returning routes to subpages
   return (
-    <HomePage></HomePage>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/shop" element={<ShopPage />} />
+      <Route path="/learn" element={<LearnPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/login" element={<LoginPage />} />
+    </Routes>
   );
 }
 
